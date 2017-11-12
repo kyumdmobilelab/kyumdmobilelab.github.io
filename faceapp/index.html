@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FaceApp</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/ccv.js"></script>
+    <script type="text/javascript" src="js/face.js"></script>
+    <!-- Load the polyfill to switch-hit between Chrome and Firefox -->
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+    <script type="text/javascript" src="js/common.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+<div id="bgViewDiv">
+    <div id="titleDiv">
+        <div style="font-size:2.2em; font-weight:bold;">高苑面相館</div>
+        <div style="font-size:0.9em; float:right; margin-right:10px;">不準不要錢</div><br />
+        <hr />
+    </div>
+    <div id="mainDiv">
+        <div id="progressDiv" style="display:none;">
+            <div style="text-align:center; margin-left:auto; margin-right:auto; margin-top:10px; margin-bottom:10px; font-weight: bold;">分析中...</div>
+            <img style="margin-left:auto; margin-right:auto; display:block; margin-top:20px; margin-bottom:20px;" src="images/ajax-loader.gif"/>
+            <br>
+        </div>
+        <div style="width: 500px; margin-left: auto; margin-right: auto;" id="chooseCameraDiv">
+            <label for="videoSource">Camera source: </label><select id="videoSource"></select>
+        </div>
+        <div id="panelDiv">
+            <video id="localVideo" autoplay playsinline muted></video>
+            <canvas id="localCanvas"></canvas>
+            <div style="position: relative;">
+                <label class="switch">
+                    <input type="checkbox" onchange="switchChange(this)" id="switch_checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <div style="position: absolute; top:8px; left:68px; font-size:0.9em;">自動抓取臉部</div>
+                <button id="takeSnapshotBtuuon" onclick="takeSnapshotBtuuon_click()">臉部分析</button>          
+            </div>
+            <div id="countSecond" style="margin-top:10px; margin-left:2px;"></div>
+        </div>
+        <div id="frameDiv">
+            <img id="bgbgImage" src="images/bg.jpg" />
+            <div id="otherDiv" style="display:none;">
+                
+                <div id="otherMsgTitle">[ 分析結果 ]</div>
+                <img id="faceImage" />
+                <img id="bgFaceImage" src="images/roundLine.png" />
+                
+                <div id="analysisTitle" class="analysisText" style="top:66px; left:20px; display:none;"></div>
+                <div id="myProperty1" class="myProperty" style="top:150px; left:13px; display:none;"></div>
+                <div id="myProperty2" class="myProperty" style="top:90px; left:340px; display:none;"></div>
+                <div id="myProperty3" class="myProperty" style="top:230px; left:5px; display:none;"></div>
+                <div id="myProperty4" class="myProperty" style="top:180px; left:380px; display:none;"></div>
+                <div id="myProperty5" class="myProperty" style="top:320px; left:55px; display:none;"></div>
+                <div id="myProperty6" class="myProperty" style="top:295px; left:355px; display:none;"></div>
+                <canvas id="analysisCanvas" width="500" height="400" style="display:none;"></canvas>
+            </div>
+            <div id="resultDiv" style="display:none;">
+                <div style="clear:both; position: relative; margin-top:10px; margin-bottom:20px; height:150px; ">
+                    <div class="basicProperty" style="float:left; left:60px;">
+                        <div id="genderValue" style="text-align: center; height:120px; line-height:120px"></div>
+                    </div>
+                    <div class="basicProperty" style="float:right; right:60px;">
+                        <div id="ageValue" style="text-align: center; height:120px; line-height:120px"></div>
+                    </div>
+                </div>
+                <div style="clear:both; margin-top:50px; margin-bottom:30px; display:none;">
+                    <div style="display:none;">
+                        <div id="glassesValue" class="resultText"></div>
+                        <div id="smileValue" class="resultText"></div>
+                        <div id="angerValue" class="resultText"></div>
+                        <div id="contemptValue" class="resultText"></div>
+                        <div id="disgustValue" class="resultText"></div>
+                        <div id="fearValue" class="resultText"></div>
+                        <div id="happinessValue" class="resultText"></div>
+                        <div id="neutralValue" class="resultText"></div>
+                        <div id="sadnessValue" class="resultText"></div>
+                        <div id="surpriseValue" class="resultText"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="againDetectDiv">
+            <div id="showResultTimeCount"></div>
+            <button id="againDetectBtuuon" onclick="againDetectBtuuon_click()" style="display:none;">重新分析</button>
+        </div>
+    </div>
+
+    <div id="recommendDiv" style="display:none;">
+        <div id="recommendTitle">推薦商品</div>
+        <table id="recommendTable">
+            <tr>
+                <th>圖片</th>
+                <th>說明</th> 
+                <th>價格</th>
+            </tr>
+            <tr>
+                <td><img id="rImg1" class="recommendImg" /></td>
+                <td id="rName1"></td> 
+                <td id="rPrice1"></td>
+            </tr>
+            <tr>
+                <td><img id="rImg2" class="recommendImg" /></td>
+                <td id="rName2"></td> 
+                <td id="rPrice2"></td>
+            </tr>
+            <tr>
+                <td><img id="rImg3" class="recommendImg" /></td>
+                <td id="rName3"></td> 
+                <td id="rPrice3"></td>
+            </tr>
+            <tr>
+                <td><img id="rImg4" class="recommendImg" /></td>
+                <td id="rName4"></td> 
+                <td id="rPrice4"></td>
+            </tr>
+            <tr>
+                <td><img id="rImg5" class="recommendImg" /></td>
+                <td id="rName5"></td> 
+                <td id="rPrice5"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<audio id="myAudio" style="display:none;">
+    <source src="audio/scan.mp3">
+</audio>
+</body>
+<script type="text/javascript" src="app.js"></script>
+</html>

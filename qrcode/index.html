@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QRCode Scanner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script type="text/javascript" src="js/instascan.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/qrcode.css" />
+</head>
+<body>
+    <video id="preview" style="display:none;" autoplay playsinline></video>
+    <div id="resultDiv" style="display:none;"></div>
+    <button id="startBtuuon" onclick="startBtuuon_click()" style="display:block;">QRCode Scan</button>
+
+    <audio id="myAudio" style="display:none;">
+        <source src="audio/scan.mp3">
+    </audio>
+
+    <script type="text/javascript">
+        document.getElementById('preview').style.width = (window.innerWidth - 15)+ "px";
+        document.getElementById('preview').style.height = (window.innerHeight - 15) + "px";
+
+        let startBtuuon = document.getElementById('startBtuuon');
+        startBtuuon.style.top = ((window.innerHeight/2) - (50/2)) + "px";
+        startBtuuon.style.left = ((window.innerWidth/2) - (250/2)) + "px";
+
+        let audio = document.getElementById('myAudio');
+        let isMyAudioPlayHack = false;
+
+        startBtuuon.addEventListener("click", function() {
+            if (isMyAudioPlayHack === false) {
+                audio.play();
+                audio.pause();
+                isMyAudioPlayHack = true;
+            }
+        });
+
+        let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false });
+        scanner.addListener('scan', function (content) {
+            audio.play();
+            console.log(content);
+            scanner.stop();
+            setTimeout(function(){
+                document.getElementById('resultDiv').innerHTML = "QRCode Content:<br /><br />" + content;
+                document.getElementById('preview').style.display = 'none';
+                $('#resultDiv').slideDown();
+                $('#startBtuuon').fadeIn();
+                //document.getElementById('resultDiv').style.display = 'block';
+                //document.getElementById('startBtuuon').style.display = 'block';
+            }, 300);
+        });
+
+        function openQRCodeScanner() {
+            Instascan.Camera.getCameras().then(function (cameras) {
+                if (cameras.length > 0) {
+                  scanner.start(cameras.pop());
+                } else {
+                  console.error('No cameras found.');
+                }
+            }).catch(function (e) {
+                console.error(e);
+            });
+        }
+
+        function startBtuuon_click() {
+            document.getElementById('resultDiv').style.display = 'none';
+            document.getElementById('startBtuuon').style.display = 'none';
+            document.getElementById('preview').style.display = 'block';
+            openQRCodeScanner();
+        }
+    </script>
+</body>
+</html>

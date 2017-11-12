@@ -1,0 +1,363 @@
+
+body {
+    background-color: #D2E9FF;
+}
+
+/*
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    background: linear-gradient(rgb(248, 248, 248), rgb(255, 235, 235) );
+}*/
+
+#bgViewDiv {
+    position: relative;
+    width: 1200px;
+    height: 790px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(248, 248, 248);
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.2);
+    border-radius:20px;
+}
+
+#titleDiv {
+    width: 95%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+#progressDiv {
+    text-align: center;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+#panelDiv {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+#localCanvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 400px;
+}
+
+#localVideo {
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 500px;
+    height: 400px;
+    -webkit-transition-property: opacity;
+    -webkit-transition-duration: 2s;
+    opacity: 0;
+}
+
+#takeSnapshotBtuuon {
+    clear: both;
+    float: right;
+    margin-right: 0px;
+    font-size: 1.0em;
+    width: 100px;
+}
+
+#frameDiv {
+    clear: both;
+    position: relative;
+    width: 500px;
+    border: 0px solid rgb(189, 189, 189);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    background-color: #005757;
+    border-radius: 15px;    
+}
+
+#bgbgImage {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+#otherDiv {
+    clear: both;
+    position: relative;
+    width: 500px;
+    height: 400px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+#otherMsgTitle {
+    clear: both;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: white;
+}
+
+#faceImage {
+    display: block;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    /*margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;*/
+    top: 120px;
+    left: 145px;
+    border-radius: 50%;
+    border: 5px solid #FFE153;
+    background-color: rgb(34, 34, 34);
+}
+
+#bgFaceImage {
+    display: block;
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    top: 85px;
+    left: 110px;
+}
+
+.analysisText {
+    position: absolute;
+    text-align: center;
+    background-color: #ff8f8f;
+    /*border: 3px solid #AE0000;*/
+    border-radius: 10px;
+    color: #750000; 
+    font-weight:bold; 
+    font-size:1.7em;
+    width: 155px;
+}
+
+.myProperty {
+    position: absolute;
+    text-align: center;
+    width: 110px;
+    height: 28px;
+    /*border: 2px solid rgb(17, 122, 75);*/
+    background-color: rgb(206, 248, 229);
+    color: rgb(14, 97, 59);
+    border-radius:12px;
+    font-size: 1.25em;
+    font-weight:bold;
+}
+
+#analysisCanvas {
+    position: absolute;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#resultDiv {
+    position: relative;
+    width: 500px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    /*font-size: 1.0em;*/
+}
+
+#mainDiv {
+    position: absolute;
+    width: 500px;
+    top: 90px;
+}
+
+#recommendDiv {
+    position: absolute;
+    width: 500px;
+    top: 90px;
+    right: 60px;
+    border: 1.5px solid #4CAF50;
+    border-radius: 10px;
+}
+
+#recommendTitle {
+    width: 96px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+td {
+    font-size: 1.0em;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.0em;
+}
+
+.recommendImg {
+    margin-top: 5px;
+    margin-bottom: 3px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width:100px; 
+    height:100px;
+}
+
+strong {
+    font-size:1.3em;
+    font-weight:bold;
+}
+
+#recommendTable {
+    width:480px;
+    text-align:center;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#againDetectDiv{
+    clear: both;
+    width: 500px;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#showResultTimeCount {
+    float: left;
+    margin-top: 17px;
+    margin-bottom: 30px;
+    margin-left: 25px;
+    font-size: 1.2em;
+    font-weight:bold;
+}
+
+#againDetectBtuuon {
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-right: 10px;
+    font-size: 1.0em;
+    width: 100px;
+}
+
+.resultText {
+    margin-left: 50px;
+    clear: both;
+}
+
+.basicProperty {
+    position: absolute;
+    background-color: #FFE153;
+    border: 3px solid #EAC100;
+    border-radius: 12%;
+    color: #977C00;
+    width: 150px;
+    height: 120px;
+    font-weight:bold; 
+    font-size:2.5em;
+    margin-top: 30px;
+}
+
+
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+  
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: #d84a38;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #d84a38;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
