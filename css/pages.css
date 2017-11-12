@@ -1,0 +1,56 @@
+.box {
+    float: left;
+    border-radius:10px;
+    border: 1.5px solid #01814A;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 35px;
+    margin-right: 15px;
+}
+
+.title {
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    margin-top: -18px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.photo {
+    float: left;
+    width: 180px;
+    height: 180px;
+    border-radius:50%;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+.info {
+    float: left;
+    margin-top: 20px;
+    margin-left: 35px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+}
+
+.name {
+    font-size: 2.0em;
+    font-weight: bold;
+}
+
+.ename {
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.text {
+    margin-top: 15px;
+    margin-left: 0px;
+}
