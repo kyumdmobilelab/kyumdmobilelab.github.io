@@ -1,5 +1,11 @@
+html {
+    height: 100%;
+}
+
 body {
-    background-color:#f5f5f5;
+    /*background-color:#f5f5f5;*/
+    background: linear-gradient(#D1E9E9,#FFFFFF);
+    min-height: 100%;
 }
 
 .box {
