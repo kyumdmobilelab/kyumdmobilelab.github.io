@@ -215,7 +215,7 @@ function countFrequencyOfFaceDetect() {
         let rangeW = w/4;
         let faceCenterX = FaceCompX + (FaceCompWidth/2);
     
-        if ((FaceCompWidth > 80 && FaceCompHeight > 80) && (faceCenterX >= rangeW && faceCenterX <= (rangeW*3))) {
+        if ((FaceCompWidth > 50 && FaceCompHeight > 50) && (faceCenterX >= rangeW && faceCenterX <= (rangeW*3))) {
             detectTime++;
         } else {
             detectTime--;
@@ -268,7 +268,7 @@ function autoFetchFaceImage() {
     let rangeW = w/4;
     let faceCenterX = FaceCompX + (FaceCompWidth/2);
 
-    if (FaceCompWidth > 80 && FaceCompHeight > 80) {
+    if (FaceCompWidth > 50 && FaceCompHeight > 50) {
         if (faceCenterX >= rangeW && faceCenterX <= (rangeW*3)) {
             myAudio.play();
             takeSnapshotBtuuon_click();
@@ -468,7 +468,7 @@ function showResultValues() {
 
 
     $('#mainDiv').hide();
-    mainDiv.style.left = "60px";
+    mainDiv.style.left = "50px";
 
     analysisData(aData);
 
