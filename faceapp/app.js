@@ -381,7 +381,7 @@ function showResultValues() {
     var countTime = 15;
 
     showResultCountTimerId = setInterval(function(){
-        if (countTime < 10) {
+        if (countTime < 6) {
             document.getElementById('showResultTimeCount').innerText = countTime + " 秒後關閉分析結果...";
             document.getElementById('showResultTimeCount').style.display = 'block';
         }
