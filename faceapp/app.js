@@ -207,6 +207,15 @@ function switchChange(e) {
     }
 }
 
+function cameraSwitchChange(e) {
+    console.log(e.checked);
+    if (e.checked) {
+        window.stream.getVideoTracks()[0].enabled = false;
+    } else {
+        start();
+    }
+}
+
 function countFrequencyOfFaceDetect() {
     var detectTime = 0;
 
@@ -293,6 +302,7 @@ function takeSnapshotBtuuon_click() {
     document.getElementById('chooseCameraDiv').style.display = 'none';
     document.getElementById('frameDiv').style.backgroundColor = '#f8f8f8';
     document.getElementById('bgbgImage').style.display = 'none';
+    document.getElementById('cameraSwitch').style.display = 'none';
 
     const myFirstPromise = new Promise((resolve, reject) => {
         // 執行一些非同步作業，最終呼叫:
@@ -359,6 +369,7 @@ function againDetectBtuuon_click() {
     document.getElementById('showResultTimeCount').style.display = 'none';
     document.getElementById('chooseCameraDiv').style.display = 'block';
     //document.getElementById('recommendDiv').style.display = 'none';
+    document.getElementById('cameraSwitch').style.display = 'block';
 
     document.getElementById('analysisTitle').style.display = 'none';
     document.getElementById('myProperty1').style.display = "none";

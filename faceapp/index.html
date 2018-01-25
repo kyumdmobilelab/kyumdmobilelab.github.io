@@ -32,6 +32,11 @@
         <div style="width: 500px; margin-left: auto; margin-right: auto;" id="chooseCameraDiv">
             <label for="videoSource">Camera source: </label><select id="videoSource"></select>
         </div>
+        <label class="switch" style="position: absolute; top:0px; right:30px;" id="cameraSwitch">
+            <input type="checkbox" onchange="cameraSwitchChange(this)" id="cameraSwitch_checkbox">
+            <span class="slider round"></span>
+            <div style="position: absolute; top:8px; right:-65px; font-size:0.9em;">停止視訊</div>
+        </label>
         <div id="panelDiv">
             <video id="localVideo" autoplay playsinline muted></video>
             <canvas id="localCanvas"></canvas>
