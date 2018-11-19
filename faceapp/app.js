@@ -578,7 +578,7 @@ function processImage(imageBlob) {
     // **********************************************
 
     // Replace the subscriptionKey string value with your valid subscription key.
-    var subscriptionKey = "000d2bdb2bbc441c8859254a2f52e08e";
+    var subscriptionKey = "abf056c5312b4442a15f7e5468f51444";
 
 
     // Replace or verify the region.
@@ -591,8 +591,8 @@ function processImage(imageBlob) {
     // a free trial subscription key, you should not need to change this region.
     
 
-    //var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
-    var uriBase = "https://eastasia.api.cognitive.microsoft.com/face/v1.0/detect"
+    var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+    
 
 
     // Request parameters.
